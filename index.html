@@ -94,40 +94,59 @@
     /* HERO */
     #forside {
       min-height: 100vh;
-      background: linear-gradient(135deg, var(--dark) 0%, #1B4F5C 60%, var(--teal) 100%);
-      display: flex;
-      align-items: center;
-      padding: 5rem 2rem 3rem;
+      background: linear-gradient(to right, var(--dark) 0%, #1a3a48 55%, #1B6B77 100%);
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      position: relative;
+      overflow: hidden;
     }
 
-    .hero-inner {
-      max-width: 1080px;
-      margin: 0 auto;
-      width: 100%;
+    .hero-text {
       display: flex;
-      align-items: center;
-      gap: 3rem;
+      flex-direction: column;
+      justify-content: center;
+      padding: 6rem 2rem 4rem 4rem;
+      position: relative;
+      z-index: 2;
     }
-
-    .hero-text { flex: 1; min-width: 0; }
 
     .hero-graphic {
-      flex-shrink: 0;
-      width: 340px;
-      opacity: 0.92;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    /* Left-edge blend from text area into photo */
+    .hero-graphic::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; bottom: 0;
+      width: 120px;
+      background: linear-gradient(to right, var(--dark), transparent);
+      z-index: 2;
+      pointer-events: none;
     }
 
     .hero-photo {
-      width: 100%;
-      max-width: 340px;
-      border-radius: 12px;
+      height: 97vh;
+      width: auto;
+      max-width: 130%;
+      object-fit: contain;
+      object-position: bottom center;
       display: block;
-      filter: drop-shadow(0 8px 32px rgba(0,0,0,0.45));
+      position: relative;
+      z-index: 1;
+      /* Fade out at the bottom */
+      -webkit-mask-image: linear-gradient(to bottom, black 65%, transparent 100%);
+      mask-image: linear-gradient(to bottom, black 65%, transparent 100%);
     }
 
     @media (max-width: 860px) {
+      #forside { grid-template-columns: 1fr; }
       .hero-graphic { display: none; }
-      .hero-inner { max-width: 680px; }
+      .hero-text { padding: 5rem 1.5rem 3rem; }
     }
 
     .hero-eyebrow {
@@ -438,31 +457,29 @@
 
   <!-- FORSIDE -->
   <section id="forside">
-    <div class="hero-inner">
-      <div class="hero-text">
-        <p class="hero-eyebrow">Kiil Management</p>
-        <h1 class="hero-name">Ulrik Stougaard Kiil</h1>
-        <p class="hero-tagline">
-          Ambitiøs transformationsleder med +15 års erfaring i at drive strategisk forandring på tværs af energisektoren.
-          Fra fossilt fundament til grøn fremtid — jeg kender vejen.
-        </p>
-        <div class="hero-chips">
-          <span class="chip">Energisektorens transformation</span>
-          <span class="chip">Strategi & værdirealisering</span>
-          <span class="chip">Tværorganisatorisk ledelse</span>
-          <span class="chip">Porteføljestyring & governance</span>
-          <span class="chip">Program og forandringsledelse</span>
-        </div>
-        <div class="hero-cta">
-          <a href="#om-mig" class="btn btn-primary">Om mig</a>
-          <a href="#kontakt" class="btn btn-outline">Kontakt</a>
-        </div>
+    <div class="hero-text">
+      <p class="hero-eyebrow">Kiil Management</p>
+      <h1 class="hero-name">Ulrik Stougaard Kiil</h1>
+      <p class="hero-tagline">
+        Ambitiøs transformationsleder med +15 års erfaring i at drive strategisk forandring på tværs af energisektoren.
+        Fra fossilt fundament til grøn fremtid — jeg kender vejen.
+      </p>
+      <div class="hero-chips">
+        <span class="chip">Energisektorens transformation</span>
+        <span class="chip">Strategi & værdirealisering</span>
+        <span class="chip">Tværorganisatorisk ledelse</span>
+        <span class="chip">Porteføljestyring & governance</span>
+        <span class="chip">Program og forandringsledelse</span>
       </div>
+      <div class="hero-cta">
+        <a href="#om-mig" class="btn btn-primary">Om mig</a>
+        <a href="#kontakt" class="btn btn-outline">Kontakt</a>
+      </div>
+    </div>
 
-      <!-- Portrait photo -->
-      <div class="hero-graphic">
-        <img src="ulrik.png" alt="Ulrik Stougaard Kiil" class="hero-photo">
-      </div>
+    <!-- Portrait: full-height, blends into background -->
+    <div class="hero-graphic">
+      <img src="ulrik.png" alt="Ulrik Stougaard Kiil" class="hero-photo">
     </div>
   </section>
 
