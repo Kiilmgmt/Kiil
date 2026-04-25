@@ -36,21 +36,26 @@
       background: var(--dark);
       z-index: 100;
       padding: 0 1.5rem;
-      height: 56px;
+      height: 60px;
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
 
     .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
       color: var(--white);
       font-weight: 700;
-      font-size: 1.1rem;
-      letter-spacing: 0.05em;
+      font-size: 1rem;
+      letter-spacing: 0.06em;
       text-decoration: none;
+      text-transform: uppercase;
     }
 
     .nav-logo span { color: #57c5b6; }
+    .nav-logo svg { flex-shrink: 0; }
 
     .nav-links {
       display: flex;
@@ -92,12 +97,29 @@
       background: linear-gradient(135deg, var(--dark) 0%, #1B4F5C 60%, var(--teal) 100%);
       display: flex;
       align-items: center;
-      padding: 5rem 1.5rem 3rem;
+      padding: 5rem 2rem 3rem;
     }
 
     .hero-inner {
-      max-width: 760px;
+      max-width: 1080px;
       margin: 0 auto;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+    }
+
+    .hero-text { flex: 1; min-width: 0; }
+
+    .hero-graphic {
+      flex-shrink: 0;
+      width: 340px;
+      opacity: 0.92;
+    }
+
+    @media (max-width: 860px) {
+      .hero-graphic { display: none; }
+      .hero-inner { max-width: 680px; }
     }
 
     .hero-eyebrow {
@@ -388,7 +410,13 @@
 <body>
 
   <nav>
-    <a href="#forside" class="nav-logo">KIIL <span>MANAGEMENT</span></a>
+    <a href="#forside" class="nav-logo">
+      <svg width="34" height="34" viewBox="0 0 34 34" fill="none" aria-hidden="true">
+        <rect width="34" height="34" rx="8" fill="#57c5b6"/>
+        <path d="M11 9v16M11 17l12-8M11 17l12 8" stroke="#1a2332" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      KIIL <span>MANAGEMENT</span>
+    </a>
     <ul class="nav-links" id="navLinks">
       <li><a href="#forside">Forside</a></li>
       <li><a href="#om-mig">Om mig</a></li>
@@ -403,22 +431,67 @@
   <!-- FORSIDE -->
   <section id="forside">
     <div class="hero-inner">
-      <p class="hero-eyebrow">Kiil Management</p>
-      <h1 class="hero-name">Ulrik Stougaard Kiil</h1>
-      <p class="hero-tagline">
-        Ambitiøs transformationsleder med +15 års erfaring i at drive strategisk forandring på tværs af energisektoren.
-        Fra fossilt fundament til grøn fremtid — jeg kender vejen.
-      </p>
-      <div class="hero-chips">
-        <span class="chip">Energisektorens transformation</span>
-        <span class="chip">Strategi & værdirealisering</span>
-        <span class="chip">Tværorganisatorisk ledelse</span>
-        <span class="chip">Porteføljestyring & governance</span>
-        <span class="chip">Program og forandringsledelse</span>
+      <div class="hero-text">
+        <p class="hero-eyebrow">Kiil Management</p>
+        <h1 class="hero-name">Ulrik Stougaard Kiil</h1>
+        <p class="hero-tagline">
+          Ambitiøs transformationsleder med +15 års erfaring i at drive strategisk forandring på tværs af energisektoren.
+          Fra fossilt fundament til grøn fremtid — jeg kender vejen.
+        </p>
+        <div class="hero-chips">
+          <span class="chip">Energisektorens transformation</span>
+          <span class="chip">Strategi & værdirealisering</span>
+          <span class="chip">Tværorganisatorisk ledelse</span>
+          <span class="chip">Porteføljestyring & governance</span>
+          <span class="chip">Program og forandringsledelse</span>
+        </div>
+        <div class="hero-cta">
+          <a href="#om-mig" class="btn btn-primary">Om mig</a>
+          <a href="#kontakt" class="btn btn-outline">Kontakt</a>
+        </div>
       </div>
-      <div class="hero-cta">
-        <a href="#om-mig" class="btn btn-primary">Om mig</a>
-        <a href="#kontakt" class="btn btn-outline">Kontakt</a>
+
+      <!-- Abstract graphic: energy transformation network -->
+      <div class="hero-graphic" aria-hidden="true">
+        <svg viewBox="0 0 340 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Concentric rings -->
+          <circle cx="170" cy="170" r="155" stroke="rgba(87,197,182,0.07)" stroke-width="1"/>
+          <circle cx="170" cy="170" r="120" stroke="rgba(87,197,182,0.11)" stroke-width="1"/>
+          <circle cx="170" cy="170" r="85"  stroke="rgba(87,197,182,0.17)" stroke-width="1"/>
+          <circle cx="170" cy="170" r="48"  stroke="rgba(87,197,182,0.26)" stroke-width="1.5"/>
+          <!-- Radial spokes -->
+          <line x1="170" y1="170" x2="170" y2="15"  stroke="rgba(87,197,182,0.18)" stroke-width="1" stroke-dasharray="3 5"/>
+          <line x1="170" y1="170" x2="325" y2="170" stroke="rgba(87,197,182,0.13)" stroke-width="1" stroke-dasharray="3 5"/>
+          <line x1="170" y1="170" x2="280" y2="60"  stroke="rgba(87,197,182,0.15)" stroke-width="1" stroke-dasharray="3 5"/>
+          <line x1="170" y1="170" x2="60"  y2="60"  stroke="rgba(87,197,182,0.12)" stroke-width="1" stroke-dasharray="3 5"/>
+          <line x1="170" y1="170" x2="280" y2="280" stroke="rgba(87,197,182,0.08)" stroke-width="1" stroke-dasharray="3 5"/>
+          <line x1="170" y1="170" x2="60"  y2="280" stroke="rgba(87,197,182,0.08)" stroke-width="1" stroke-dasharray="3 5"/>
+          <line x1="170" y1="170" x2="15"  y2="170" stroke="rgba(87,197,182,0.08)" stroke-width="1" stroke-dasharray="3 5"/>
+          <line x1="170" y1="170" x2="170" y2="325" stroke="rgba(87,197,182,0.07)" stroke-width="1" stroke-dasharray="3 5"/>
+          <!-- Outer nodes -->
+          <circle cx="170" cy="15"  r="5" fill="#57c5b6" opacity="0.75"/>
+          <circle cx="280" cy="60"  r="4" fill="#57c5b6" opacity="0.6"/>
+          <circle cx="325" cy="170" r="4" fill="#57c5b6" opacity="0.5"/>
+          <circle cx="60"  cy="60"  r="4" fill="#57c5b6" opacity="0.4"/>
+          <circle cx="15"  cy="170" r="3" fill="#57c5b6" opacity="0.35"/>
+          <circle cx="280" cy="280" r="3" fill="#57c5b6" opacity="0.25"/>
+          <!-- Mid-ring nodes -->
+          <circle cx="170" cy="50"  r="6" fill="#57c5b6" opacity="0.55"/>
+          <circle cx="255" cy="85"  r="5" fill="#57c5b6" opacity="0.5"/>
+          <circle cx="290" cy="170" r="5" fill="#57c5b6" opacity="0.42"/>
+          <circle cx="85"  cy="85"  r="4" fill="#57c5b6" opacity="0.38"/>
+          <!-- Transformation arc: fossil (bottom-left) → green (top-right) -->
+          <path d="M65 275 C95 240 128 210 152 190" stroke="rgba(87,197,182,0.45)" stroke-width="2" stroke-linecap="round" fill="none"/>
+          <path d="M152 190 C163 182 167 177 170 170" stroke="rgba(87,197,182,0.65)" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+          <path d="M170 170 C175 163 182 155 196 142 S235 110 272 82" stroke="#57c5b6" stroke-width="2.8" stroke-linecap="round" fill="none" opacity="0.9"/>
+          <!-- Arrowhead -->
+          <path d="M272 82 L254 90 L263 107 Z" fill="#57c5b6" opacity="0.9"/>
+          <!-- Centre hub -->
+          <circle cx="170" cy="170" r="22" fill="rgba(27,107,119,0.35)" stroke="#57c5b6" stroke-width="1.5"/>
+          <circle cx="170" cy="170" r="9"  fill="#57c5b6"/>
+          <!-- K monogram in centre -->
+          <path d="M167 164v12M167 170l7-6M167 170l7 6" stroke="#1a2332" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
       </div>
     </div>
   </section>
